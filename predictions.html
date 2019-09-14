@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Virtusa</title>
+        <!-- Bootstrap core CSS-->
+        <link rel="stylesheet" href="source/vendor/bootstrap/css/bootstrap.min.css">
+        <!-- Custom fonts for this template-->
+        <link rel="stylesheet" href="source/vendor/font-awesome/css/font-awesome.min.css">
+        <!-- Custom styles for this template-->
+        <link rel="stylesheet" href="source/css/sb-admin.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+	            </a>
+            </div>
+	        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+	                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Start Analysis">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-sitemap"></i>
+                            <span class="nav-link-text">Start Analytics</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseMulti">
+                            <li>
+                                <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Predict Heart Failure</a>
+			                    <i class="fa fa-fw fa-sitemap"></i>
+                                <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                                    <li>
+                                        <a class="nav-link" href="/form">
+                                            <i class="fa fa-fw fa-dashboard"></i>
+                                            <span class="nav-link-text">Form </span>
+                                        </a>
+		                            </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                            <i class="fa fa-fw fa-angle-left"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <h4 style="color: white;">Predict Heart Dieases</h4>
+                        &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                    <li class="nav-item dropdown">
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="content-wrapper">
+        <div id  = "graph" class="container-fluid" style="padding-top: 20px">
+            <form id="contact-form"  name="predictions" onsubmit="return validateForm()">
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-md-6" >
+                            <div class="form-group">
+                                <label for="Age">Age*</label>
+                                <input id="aul" type="text" name="aul" class="form-control" placeholder="Please enter Age" required="required"  data-toggle="popover" title="Enter Albumin, urine level">
+                            </div>
+                        </div>
+                        <div class="col-md-6
+                            <div class="form-group">
+                                <label for="sex">Sex*</label>
+                                <select id="ucl"  name="ucl" class="form-control" required="required" data-toggle="popover" title="Enter Gender">
+                                    <option value='1'>Male </option>
+                                    <option value='0'>Female</option>
+                                </select>
+                        </div>
+			            <div class="col-md-6">  
+                            <div class="form-group">
+                                <label for="chest_pain_type">chest_pain_type*</label>
+                                <select id="acl"  name="acl" class="form-control" required="required" data-toggle="popover" title="Enter chest_pain_type">
+                                    <option value='1'>typical angina </option>
+                                    <option value='2'>atypical angina</option>
+                                    <option value='3'>non-anginal pain</option>
+                                    <option value='4'>asymptomati</option>
+                                    </select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="resting_blood_pressure">resting_blood_pressure*</label>
+                                <input id="cl" type="text" name="cl" class="form-control" placeholder="Please enter resting_blood_pressure" required="required"  data-toggle="popover" title="Enter Creatinine level">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cholesterol">cholesterol*</label>
+                                <input id="grsl" type="text" name="grsl" class="form-control" placeholder="Please enter cholesterol" required="required"  data-toggle="popover" title="Enter Glucose refrigerated serum level">
+                            </div>
+                        </div>
+			            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fasting_blood_sugar">fasting_blood_sugar*</label>
+                                <input id="irsl" type="text" name="irsl" class="form-control" placeholder="Please enter fasting_blood_sugar" required="required"  data-toggle="popover" title="Enter Iron refrigerated serum level">
+                            </div>
+                        </div>
+			            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="REST ECG">rest_ecg*</label>
+                                <select id="ld"  name="ld" class="form-control" required="required" data-toggle="popover" title="Enter REST ECG">
+                                    <option value='0'>normal</option>
+                                    <option value='2'>ST-T wave abnormality</option>
+                                    <option value='3'>left ventricular hypertrophy</option>
+                                    </select>
+                            </div>
+                        </div>
+				        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="max_heart_rate_achieved">max_heart_rate_achieved*</label>
+                                <input id="ol" type="text" name="ol" class="form-control" placeholder="Please enter max_heart_rate_achieved " required="required"  data-toggle="popover" title="Enter Osmolality level">
+                            </div>
+                        </div>
+			            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="red cell">exercise_induced_angina*</label>
+                                <select  select id="rc"  name="rc" class="form-control" required="required" data-toggle="popover" title="Enter Exercise INDUCED ANGINA">
+                                    <option value='0'>No</option>
+                                    <option value='1'>YES</option>
+                                    </select>
+                            </div>
+                        </div>
+			            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="depression">st_depression*</label>
+                                <input id="plc" type="text" name="plc" class="form-control" placeholder="Please enter depression" required="required"  data-toggle="popover" title="Enter Platelet count (1000 cells/uL)">
+                            </div>
+                        </div>
+			            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="st_slope">st_slope*</label>
+                                <select  select id="glyl"  name="glyl" class="form-control" required="required" data-toggle="popover" title="Enter ST_slope">
+                                    <option value='1'>upsloping</option>
+                                    <option value='2'>flat</option>
+                                    <option value="3">downsloping </option>
+                                    </select>
+                            </div>
+                        </div>
+						<div class="col-md-6">
+                            <div class="form-group">
+                                <label for="num_major_vessels">num_major_vessels*</label>
+                                <input id="uc" type="text" name="uc" class="form-control" placeholder="Please enter num_major_vessels" required="required"  data-toggle="popover" title="Enter the volume of urine collection #1 (mL)">
+                            </div>
+                        </div>
+			            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="thalassemia">thalassemia*</label>
+                                <select  select id="uf"  name="uf" class="form-control" required="required" data-toggle="popover" title="Enter thalassemia">
+                                    <option value='1'>normal</option>
+                                    <option value='2'>fixed defect</option>
+                                    <option value="3">reversable defect </option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12" align= "center">
+                            <input type="submit" class="btn btn-success btn-send" value="Click here to Predict">
+				                &nbsp;
+				            <button type="reset" value="Reset" class = "btn btn-success btn-send">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+			<div id ="result_t2d">
+			<p> Result will be shown here</p>
+			</div>
+   	    </div>
+            <script>
+                function validateForm()
+                {
+                    var alu = document.forms["predictions"]["aul"].value;
+                    var ucl = document.forms["predictions"]["ucl"].value;
+                    var acl = document.forms["predictions"]["acl"].value;
+                    var cl = document.forms["predictions"]["cl"].value;
+                    var grsl = document.forms["predictions"]["grsl"].value;
+                    var irsl = document.forms["predictions"]["irsl"].value;
+                    var ld = document.forms["predictions"]["ld"].value;
+                    var ol = document.forms["predictions"]["ol"].value;
+                    var rc = document.forms["predictions"]["rc"].value;
+                    var plc = document.forms["predictions"]["plc"].value;
+                    var glyl = document.forms["predictions"]["glyl"].value;
+                    var uc = document.forms["predictions"]["uc"].value;
+                    var uf = document.forms["predictions"]["uf"].value;
+				
+                    var col_val = [alu,ucl,acl,cl,grsl,irsl,ld,ol,rc,plc,glyl,uc,uf];
+					
+						alert(col_val);
+						console.log(col_val);
+                    var data1;
+                    function createCORSRequest(method, url)
+                    {
+                        var xhr = new XMLHttpRequest();
+                        if ("withCredentials" in xhr)
+                        {
+                            xhr.open(method,url,true);
+                        }
+                        else if (typeof XDomainRequest != "undefined")
+                        {
+                            xhr = new XDomainRequest();
+                            xhr.open(method, url);
+                        }
+                        else
+                        {
+                            xhr =null;
+                        }
+                        return xhr;
+                    }
+                    function makeCorsRequest()
+                    {
+                        var url = 'http://localhost:5000/heartpredict/viz/'+col_val;
+                        var xhr = createCORSRequest('GET', url);
+                        if(!xhr)
+                        {
+                            return;
+                        }
+                        xhr.onload = function()
+                        {
+                            data1 = JSON.parse(xhr.responseText);
+							alert(data1);
+					        load(data1);
+                        };
+                        xhr.onerror = function()
+                        {
+                        };
+                        xhr.send();
+                    }
+                    makeCorsRequest();
+                    function load(data1)
+                    {
+                        var tr = data1;
+                       var html = "<h3> "+tr['isHeart']+"</h3>";
+					   $("#result_t2d").html("");
+						$('#result_t2d').append(html);
+						console.log(tr['isHeart']);
+						console.log(tr);
+                    }
+                }
+				$("#contact-form").submit(function(e) {
+					e.preventDefault();
+				});
+				
+				
+			</script>
+            <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Designed and Developed by ST &nbsp; &nbsp; </small>
+        </div>
+      </div>
+    </footer>
+	 <!-- Scroll to Top Button-->
+   <!-- Bootstrap core JavaScript-->
+	<script type="text/javascript" src="source/vendor/jquery/jquery.min.js"></script>
+
+	<script type= "text/javascript" src="source/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+	<script type="text/javascript" src="source/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+	<script type="text/javascript" src="source/js/sb-admin.min.js"></script>
+        </div>
+    </body>
+</html>
