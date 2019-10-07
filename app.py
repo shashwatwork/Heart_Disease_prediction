@@ -6,7 +6,7 @@ from flask_cors import CORS
 import seaborn as se
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__)   
 CORS(app)
 API_NAME = Api(app)
 app.config['SECRET_KEY'] = 'disable the web security'
@@ -66,4 +66,4 @@ def data_scaling(df):
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=5000, debug=True, threaded=True)
+        app.run(host='localhost', port=5000, debug=True, threaded=True)
