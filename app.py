@@ -12,6 +12,9 @@ API_NAME = Api(app)
 app.config['SECRET_KEY'] = 'disable the web security'
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+@app.route("/")
+def home():
+    return "Welcome to Heart Prediction API!"
 class Predictheart(Resource):
     def get(self, vizdata):
         info = vizdata.split(",")
