@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 import pickle
 import numpy as np
-from flask_restful import Api,Resource
+from flask_restplus import Api,Resource
 from flask_cors import CORS
 import seaborn as se
 import pandas as pd
