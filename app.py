@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 from flask_restplus import Api,Resource
 from flask_cors import CORS
+from flask import jsonify
 import seaborn as se
 import pandas as pd
 
@@ -43,7 +44,7 @@ class Predictheart(Resource):
         else:
             result = "Yes"
         # return render_template('result.html', glycohemoglobin=abs(round(w_glyco)*10), glucose_serum=abs(round(w_gluco)*10), albumin_urine=abs(round(w_albumin)*10), pred=result)
-        return {'isHeart': result}
+        return jsonify('isHeart'=result)
 
 
 
