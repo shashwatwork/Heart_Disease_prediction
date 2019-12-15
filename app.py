@@ -44,7 +44,7 @@ class Predictheart(Resource):
         else:
             result = "Yes"
         # return render_template('result.html', glycohemoglobin=abs(round(w_glyco)*10), glucose_serum=abs(round(w_gluco)*10), albumin_urine=abs(round(w_albumin)*10), pred=result)
-        return jsonify('isHeart'=result)
+        return jsonify(result)
 
 
 
