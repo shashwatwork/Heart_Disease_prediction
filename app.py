@@ -18,7 +18,6 @@ def home():
     return "Welcome to Heart Prediction API!"
 class Predictheart(Resource):
     def get(self, vizdata):
-        print(vizdata)
         info = vizdata.split(",")
         age = int(info[0])
         sex = int(info[1])
