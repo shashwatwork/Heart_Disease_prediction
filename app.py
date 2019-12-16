@@ -17,8 +17,8 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def home():
     return "Welcome to Heart Prediction API!"
 class Predictheart(Resource):
-    def get(self, vizdata):
-        info = vizdata.split(",")
+    def get(self):
+        info = request.agrs.getlist('vizdata[]')
         age = int(info[0])
         sex = int(info[1])
         chest_pain_type = float(info[2])
@@ -44,12 +44,12 @@ class Predictheart(Resource):
         else:
             result = "Yes"
         # return render_template('result.html', glycohemoglobin=abs(round(w_glyco)*10), glucose_serum=abs(round(w_gluco)*10), albumin_urine=abs(round(w_albumin)*10), pred=result)
-        return jsonify(result)
+        return {'isHeart':result}
 
 
 
 
-API_NAME.add_resource(Predictheart, '/heartpredict/viz/<vizdata>', methods=['POST', 'GET'])
+API_NAME.add_resource(Predictheart, '/heartpredict/viz', methods=['POST', 'GET'])
 
 def load_model():
     """This function load the pickled model as API for flask
