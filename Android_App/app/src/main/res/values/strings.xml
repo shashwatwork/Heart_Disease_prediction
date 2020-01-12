@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">HeartDiseasePrediction</string>
+    <string name="ageHint">Age</string>
+    <string name="pageTitle">Heart Prediction</string>
+    <string name="sectionHint">Fill below required fields</string>
+    <string name="gender">Gender:</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="restbloodpre">Blood Pressure(mm Hg)</string>
+    <string name="chloestrol">Cholesterol(mg/dl)</string>
+    <string name="fastingbloodsugar">Blood Sugar(mg/dl)</string>
+    <string name="maxheartrate">Maximum Heart Rate</string>
+    <string name="stdpress">ST Depression</string>
+    <string name="maxvessels">Maximum Vessels</string>
+    <string name="predictv">PREDICT</string>
+</resources>
