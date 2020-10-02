@@ -1,4 +1,4 @@
-package com.infinitemakerz.heartdiseaseprediction;
+package com.infinitemakerz.heartdiseaseprediction.Model;
 
 import com.google.gson.annotations.SerializedName;
 

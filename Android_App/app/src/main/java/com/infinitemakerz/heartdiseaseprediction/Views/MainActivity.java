@@ -1,4 +1,4 @@
-package com.infinitemakerz.heartdiseaseprediction;
+package com.infinitemakerz.heartdiseaseprediction.Views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,20 +7,20 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.infinitemakerz.heartdiseaseprediction.Network.ApiInterface;
+import com.infinitemakerz.heartdiseaseprediction.Network.ApiClient;
+import com.infinitemakerz.heartdiseaseprediction.Model.Pojo;
+import com.infinitemakerz.heartdiseaseprediction.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         vizdata.add(stslopeV);
         vizdata.add(majorVessels);
         vizdata.add(thV);
-        apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
+        apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
         Call<Pojo> call = apiInterface.getAPIResponse(vizdata);
         call.enqueue(new Callback<Pojo>() {
             @Override
