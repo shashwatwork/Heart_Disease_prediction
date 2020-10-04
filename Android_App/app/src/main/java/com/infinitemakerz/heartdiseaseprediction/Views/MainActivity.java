@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -30,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    TextInputLayout textInputLayout, bloodpressure, cholestrol, bloodsugar, maxheartrate, stdepression, maxvessels;
+    AutoCompleteTextView bloodsugar, bloodpressure, cholestrol, maxheartrate, stdepression, maxvessels, age;
     Spinner spinner, spinner2, spinner3, spinner4, spinner5;
     Button button;
     String[] chestPain={"Chest Pain", "typical angina", "atypical angina", "non-anginal pain", "asymptomatic"};
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         progressDialog=new ProgressDialog(this);
-        textInputLayout=findViewById(R.id.textInputLayout);
+
         bloodpressure=findViewById(R.id.bloodpressure);
         cholestrol=findViewById(R.id.cholestrol);
         bloodsugar=findViewById(R.id.bloodsugar);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         maxheartrate=findViewById(R.id.maxheartrate);
         stdepression=findViewById(R.id.stdepression);
         maxvessels=findViewById(R.id.maxvessels);
+        age = findViewById(R.id.age);
         spinner=findViewById(R.id.spinner);
         spinner2=findViewById(R.id.spinner2);
         spinner3=findViewById(R.id.spinner3);
@@ -96,8 +98,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 progressDialog.show();
                 int id = radioGroup.getCheckedRadioButtonId();
                 radioButton=findViewById(id);
-                if((textInputLayout.getEditText().getText().toString().length()!=0)&(bloodpressure.getEditText().getText().toString().length()!=0)&(cholestrol.getEditText().getText().toString().length()!=0)&(bloodsugar.getEditText().getText().toString().length()!=0)&(maxheartrate.getEditText().getText().toString().length()!=0)&(stdepression.getEditText().getText().toString().length()!=0)&(maxvessels.getEditText().getText().toString().length()!=0)&(!chestPainValue.equalsIgnoreCase("Chest Pain")&!chestPainValue.equalsIgnoreCase("None"))&(!electroCardiographicValue.equalsIgnoreCase("Electro Cardiographic")&!electroCardiographicValue.equalsIgnoreCase("None"))&(!exerciseAnginaValue.equalsIgnoreCase("Exercise Angina")&!exerciseAnginaValue.equalsIgnoreCase("None"))&(!stSegmentValue.equalsIgnoreCase("ST Segment")&!stSegmentValue.equalsIgnoreCase("None"))&(!thalassemiaValue.equalsIgnoreCase("Thalassemia")&!thalassemiaValue.equalsIgnoreCase("None"))) {
-                    hitAPICall(textInputLayout.getEditText().getText().toString(),radioButton.getText().toString(),chestPainValue,bloodpressure.getEditText().getText().toString(),cholestrol.getEditText().getText().toString(),bloodsugar.getEditText().getText().toString(),electroCardiographicValue,maxheartrate.getEditText().getText().toString(),exerciseAnginaValue,stdepression.getEditText().getText().toString(),stSegmentValue,maxvessels.getEditText().getText().toString(),thalassemiaValue);
+                if((bloodpressure.getEditText().getText().toString().length()!=0)&(cholestrol.getEditText().getText().toString().length()!=0)&(bloodsugar.getEditText().getText().toString().length()!=0)&(maxheartrate.getEditText().getText().toString().length()!=0)&(stdepression.getEditText().getText().toString().length()!=0)&(maxvessels.getEditText().getText().toString().length()!=0)&(!chestPainValue.equalsIgnoreCase("Chest Pain")&!chestPainValue.equalsIgnoreCase("None"))&(!electroCardiographicValue.equalsIgnoreCase("Electro Cardiographic")&!electroCardiographicValue.equalsIgnoreCase("None"))&(!exerciseAnginaValue.equalsIgnoreCase("Exercise Angina")&!exerciseAnginaValue.equalsIgnoreCase("None"))&(!stSegmentValue.equalsIgnoreCase("ST Segment")&!stSegmentValue.equalsIgnoreCase("None"))&(!thalassemiaValue.equalsIgnoreCase("Thalassemia")&!thalassemiaValue.equalsIgnoreCase("None"))) {
+
+                    hitAPICall(radioButton.getText().toString(),
+                            chestPainValue,bloodpressure.getEditText().getText().toString(),
+                            cholestrol.getEditText().getText().toString(),
+                            bloodsugar.getEditText().getText().toString(),
+                            electroCardiographicValue,maxheartrate.getEditText().getText().toString(),
+                            exerciseAnginaValue,stdepression.getEditText().getText().toString(),
+                            stSegmentValue,maxvessels.getEditText().getText().toString(),thalassemiaValue);
                 }
                 else
                 {
