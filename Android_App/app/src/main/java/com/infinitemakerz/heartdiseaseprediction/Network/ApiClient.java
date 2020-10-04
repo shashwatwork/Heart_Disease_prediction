@@ -1,4 +1,4 @@
-package com.infinitemakerz.heartdiseaseprediction;
+package com.infinitemakerz.heartdiseaseprediction.Network;
 
 
 import retrofit2.Retrofit;

@@ -1,4 +1,6 @@
-package com.infinitemakerz.heartdiseaseprediction;
+package com.infinitemakerz.heartdiseaseprediction.Network;
+
+import com.infinitemakerz.heartdiseaseprediction.Model.Pojo;
 
 import java.util.List;
 
