@@ -14,5 +14,6 @@
     <string name="stdpress">ST Depression</string>
     <string name="maxvessels">Maximum Vessels</string>
     <string name="predictv">Diagnose</string>
+    <string name="Clear">Clear</string>
 
 </resources>

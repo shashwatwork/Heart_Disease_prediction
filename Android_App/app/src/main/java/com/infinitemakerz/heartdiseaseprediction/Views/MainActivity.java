@@ -31,9 +31,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    //todo: Declare AutoCompleteTextView , Buttons and Spinners(Dropdowns)
     AutoCompleteTextView bloodsugar, bloodpressure, cholestrol, maxheartrate, stdepression, maxvessels, age;
     Spinner spinner, spinner2, spinner3, spinner4, spinner5;
-    Button button;
+    Button button_diagnose;
+
+    //todo : String arrays holds spinner values
     String[] chestPain = {"Chest Pain", "typical angina", "atypical angina", "non-anginal pain", "asymptomatic"};
     String[] electroCardiographic = {"Electro Cardiographic", "normal", "ST-T wave abnormality", "left ventricular hypertrophy"};
     String[] exerciseAngina = {"Exercise Angina", "yes", "no"};
@@ -44,10 +48,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String exerciseAnginaValue = "None";
     String stSegmentValue = "None";
     String thalassemiaValue = "None";
+
     ProgressDialog progressDialog;
+
+    //todo: gender radio buttons
     RadioGroup radioGroup;
     RadioButton radioButton;
     ApiInterface apiInterface;
+
+    //todo: ArrayList holds data to be sent to the API
     List<String> vizdata;
 
     @Override
@@ -56,6 +65,44 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         progressDialog = new ProgressDialog(this);
+        findIds();
+        setAdapters();
+
+        //todo : on button diagnose click
+        button_diagnose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressDialog.setMessage("Processing!...");
+                progressDialog.show();
+                int id = radioGroup.getCheckedRadioButtonId();
+                radioButton = findViewById(id);
+
+                /**
+                 * Todo : check if all edittext and spinners are not empty
+                 */
+                if ((bloodpressure.getText().toString().length() != 0) & (cholestrol.getText().toString().length() != 0) & (bloodsugar.getText().toString().length() != 0) & (maxheartrate.getText().toString().length() != 0) & (stdepression.getText().toString().length() != 0) & (maxvessels.getText().toString().length() != 0) & (!chestPainValue.equalsIgnoreCase("Chest Pain") & !chestPainValue.equalsIgnoreCase("None")) & (!electroCardiographicValue.equalsIgnoreCase("Electro Cardiographic") & !electroCardiographicValue.equalsIgnoreCase("None")) & (!exerciseAnginaValue.equalsIgnoreCase("Exercise Angina") & !exerciseAnginaValue.equalsIgnoreCase("None")) & (!stSegmentValue.equalsIgnoreCase("ST Segment") & !stSegmentValue.equalsIgnoreCase("None")) & (!thalassemiaValue.equalsIgnoreCase("Thalassemia") & !thalassemiaValue.equalsIgnoreCase("None"))) {
+
+                    //todo: API call function 'hitAPICall()' is called here
+                    hitAPICall(age.getText().toString(), radioButton.getText().toString(),
+                            chestPainValue, bloodpressure.getText().toString(),
+                            cholestrol.getText().toString(),
+                            bloodsugar.getText().toString(),
+                            electroCardiographicValue, maxheartrate.getText().toString(),
+                            exerciseAnginaValue, stdepression.getText().toString(),
+                            stSegmentValue, maxvessels.getText().toString(), thalassemiaValue);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please enter required fields", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+
+    /**
+     *todo: function 'findIDs' finds ID in R.  and binds.
+     */
+    private void findIds(){
         age = findViewById(R.id.age);
         bloodpressure = findViewById(R.id.bloodpressure);
         cholestrol = findViewById(R.id.cholestrol);
@@ -70,7 +117,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner3 = findViewById(R.id.spinner3);
         spinner4 = findViewById(R.id.spinner4);
         spinner5 = findViewById(R.id.spinner5);
-        button = findViewById(R.id.Diagnose_btn);
+        button_diagnose = findViewById(R.id.Diagnose_btn);
+
+    }
+
+    /**
+     *todo:  'setAdapters' function sets adapters for the ArrayList and  Spinners.
+     */
+    private void setAdapters(){
         vizdata = new ArrayList<>();
         ArrayAdapter<String> arrayAdaptercp = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, chestPain);
         arrayAdaptercp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -93,29 +147,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner5.setAdapter(arrayAdapterth);
         spinner5.setOnItemSelectedListener(this);
 
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                progressDialog.setMessage("Processing!...");
-                progressDialog.show();
-                int id = radioGroup.getCheckedRadioButtonId();
-                radioButton = findViewById(id);
-
-                if ((bloodpressure.getText().toString().length() != 0) & (cholestrol.getText().toString().length() != 0) & (bloodsugar.getText().toString().length() != 0) & (maxheartrate.getText().toString().length() != 0) & (stdepression.getText().toString().length() != 0) & (maxvessels.getText().toString().length() != 0) & (!chestPainValue.equalsIgnoreCase("Chest Pain") & !chestPainValue.equalsIgnoreCase("None")) & (!electroCardiographicValue.equalsIgnoreCase("Electro Cardiographic") & !electroCardiographicValue.equalsIgnoreCase("None")) & (!exerciseAnginaValue.equalsIgnoreCase("Exercise Angina") & !exerciseAnginaValue.equalsIgnoreCase("None")) & (!stSegmentValue.equalsIgnoreCase("ST Segment") & !stSegmentValue.equalsIgnoreCase("None")) & (!thalassemiaValue.equalsIgnoreCase("Thalassemia") & !thalassemiaValue.equalsIgnoreCase("None"))) {
-
-                    hitAPICall(age.getText().toString(), radioButton.getText().toString(),
-                            chestPainValue, bloodpressure.getText().toString(),
-                            cholestrol.getText().toString(),
-                            bloodsugar.getText().toString(),
-                            electroCardiographicValue, maxheartrate.getText().toString(),
-                            exerciseAnginaValue, stdepression.getText().toString(),
-                            stSegmentValue, maxvessels.getText().toString(), thalassemiaValue);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please enter required fields", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
     @Override
@@ -144,6 +175,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    /**
+     * Description : function  'hitAPICal' receives below mentioned params
+     *              puts them into an ArrayList and
+     *              makes the network API call using retrofit.
+     *
+     * @param age
+     * @param gender
+     * @param chestPainType
+     * @param bloodPressure
+     * @param cholestrol
+     * @param bloodSugar
+     * @param ecg
+     * @param maxHeartRate
+     * @param inducedAngina
+     * @param stDepression
+     * @param stSlope
+     * @param majorVessels
+     * @param thalassemia
+     */
     public void hitAPICall(String age, String gender, String chestPainType, String bloodPressure, String cholestrol, String bloodSugar, String ecg, String maxHeartRate, String inducedAngina, String stDepression, String stSlope, String majorVessels, String thalassemia) {
         String genV = "None";
         if (gender.equalsIgnoreCase("Male"))
@@ -224,4 +274,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
     }
+
+
+
 }
+

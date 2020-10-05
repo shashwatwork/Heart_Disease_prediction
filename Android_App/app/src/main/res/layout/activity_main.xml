@@ -1,4 +1,4 @@
- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,6 +23,7 @@
                 android:id="@+id/ivRegLogo"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
+                android:layout_marginVertical="10dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="55dp"
                 android:scaleType="fitCenter"
@@ -42,10 +43,9 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_rect"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableLeft="@drawable/icon_person"
+
                 android:drawablePadding="10dp"
                 android:hint="@string/namehint"
                 android:paddingStart="10dp"
@@ -58,7 +58,7 @@
                 android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -80,15 +80,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="5dp" />
 
             <AutoCompleteTextView
                 android:id="@+id/age"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+
                 android:background="@drawable/rounded_rect"
-                android:drawableStart="@drawable/icon_person"
+
 
                 android:drawablePadding="10dp"
                 android:hint="@string/ageHint"
@@ -105,16 +106,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="5dp" />
 
             <AutoCompleteTextView
                 android:id="@+id/cholestrol"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+
                 android:background="@drawable/rounded_rect"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableLeft="@drawable/icon_person"
+
                 android:drawablePadding="10dp"
                 android:hint="@string/chloestrol"
                 android:inputType="text"
@@ -131,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="5dp" />
 
             <AutoCompleteTextView
                 android:id="@+id/bloodpressure"
@@ -139,8 +140,7 @@
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_rect"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableLeft="@drawable/icon_person"
+
                 android:drawablePadding="10dp"
                 android:hint="@string/restbloodpre"
                 android:inputType="text"
@@ -157,18 +157,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp" />
-
+                android:layout_marginTop="5dp" />
 
 
             <AutoCompleteTextView
                 android:id="@+id/maxheartrate"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_rect"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableLeft="@drawable/icon_person"
+
                 android:drawablePadding="10dp"
                 android:hint="@string/maxheartrate"
                 android:inputType="text"
@@ -185,16 +183,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="5dp" />
 
             <AutoCompleteTextView
                 android:id="@+id/stdepression"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_rect"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableLeft="@drawable/icon_person"
+
                 android:drawablePadding="10dp"
                 android:hint="@string/stdpress"
                 android:inputType="text"
@@ -208,10 +205,9 @@
                 android:id="@+id/maxvessels"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_rect"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableLeft="@drawable/icon_person"
+
                 android:drawablePadding="10dp"
                 android:hint="@string/maxvessels"
                 android:inputType="text"
@@ -225,10 +221,9 @@
                 android:id="@+id/bloodsugar"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_rect"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableLeft="@drawable/icon_person"
+
                 android:drawablePadding="10dp"
                 android:hint="@string/fastingbloodsugar"
                 android:inputType="text"
@@ -245,9 +240,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+
                 android:background="@drawable/btnsignup_gradient"
                 android:text="@string/predictv"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                />
+
+
 
 
         </LinearLayout>
