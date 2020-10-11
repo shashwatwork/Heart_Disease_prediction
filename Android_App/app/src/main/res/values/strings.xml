@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">HeartDiseasePrediction</string>
     <string name="ageHint">Age</string>
-    <string name="pageTitle">Heart Prediction</string>
+    <string name="namehint">Name</string>
+    <string name="pageTitle">Heart Disease Prediction</string>
     <string name="sectionHint">Fill below required fields</string>
     <string name="gender">Gender:</string>
     <string name="male">Male</string>
@@ -12,5 +13,7 @@
     <string name="maxheartrate">Maximum Heart Rate</string>
     <string name="stdpress">ST Depression</string>
     <string name="maxvessels">Maximum Vessels</string>
-    <string name="predictv">PREDICT</string>
+    <string name="predictv">Diagnose</string>
+    <string name="Clear">Clear</string>
+
 </resources>
